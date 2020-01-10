@@ -102,6 +102,7 @@ function updatePlayer(dt, $container) {
   setPosition(player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
+
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
   $element.src = "img/laser-blue-1.png";
@@ -113,6 +114,7 @@ function createLaser($container, x, y) {
   audio.play();
   setPosition($element, x, y);
 }
+
 
 function updateLasers(dt, $container) {
   const lasers = GAME_STATE.lasers;
@@ -130,7 +132,6 @@ function updateLasers(dt, $container) {
       if (enemy.isDead) continue;
       const r2 = enemy.$element.getBoundingClientRect();
       if (rectsIntersect(r1, r2)) {
-        // Enemy was hit
         destroyEnemy($container, enemy);
         destroyLaser($container, laser);
         break;
@@ -207,7 +208,6 @@ function updateEnemyLasers(dt, $container) {
     const player = document.querySelector(".player");
     const r2 = player.getBoundingClientRect();
     if (rectsIntersect(r1, r2)) {
-      // Player was hit
       destroyPlayer($container, player);
       break;
     }
